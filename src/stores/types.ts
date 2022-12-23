@@ -66,10 +66,32 @@ export interface Ability {
   type: string; // action, bonus action, reaction, granted, flavor
   cost: number,
   atCreation: boolean;
-  levels?: string[],
-  grant?: keyof AbilityList[], // keys of AbilityList
-  options?: string[],
+  levels?: keyof AbilityList[]
+  grant?: keyof AbilityList[],
+  options?: keyof AbilityList[],
 }
+
+export interface SpeciesAbility extends Ability {
+  species: keyof SpeciesList[];
+}
+
+export interface GrantedAbility extends Ability {
+  canBuy: false;
+}
+
+export interface LevelAbilitiy extends Ability {
+  level: number;
+  parent: keyof AbilityList;
+}
+
+export interface AttackAbility extends Ability {
+  damage: string;
+  damageType: string;
+  damageCost?: number;
+  costType?: string;
+}
+
+export interface AttackLevelAbility extends LevelAbilitiy, AttackAbility {};
 
 export interface AbilityList {
   [key: string]: Ability;
