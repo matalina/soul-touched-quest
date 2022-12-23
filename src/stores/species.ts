@@ -1,0 +1,232 @@
+import type { Species, SpeciesList } from "./types";
+
+const MundaneHuman = {
+  name: 'Mundane Human',
+  description: '',
+  hitDiceSide: 8,
+  speed: 6,
+  physical: 0,
+  mental: 0,
+  social: 1,
+  occult: -1,
+  health: 0,
+  umbra: -1, 
+  wealth: 0,
+  morality: 0,
+  reputation: 0,
+  pointsToSpend: 21,
+} as Species;
+
+const Dragon = {
+  name: 'Dragon',
+  description: '',
+  hitDiceSide: 10,
+  speed: 7,
+  physical: 0,
+  mental: 1,
+  social: -1,
+  occult: 1,
+  health: 0,
+  umbra: 1,
+  wealth: 1,
+  morality: 0,
+  reputation: 1,
+  pointsToSpend: 13,
+  abilities: {
+    'shape-change': 1,
+    'dragon-breath': 1,
+    'hoard': null,
+  },
+} as Species;
+
+const EmbracedVampire = {
+  name: 'Embraced Vampire',
+  description: '',
+  hitDiceSide: 8,
+  speed: 7,
+  physical: 1,
+  mental: 0,
+  social: -1,
+  occult: 1,
+  health: 1,
+  umbra: 1,
+  wealth: 1,
+  morality: -1,
+  reputation: 0,
+  abilities: {
+    'bloodline': 1,
+    'mesmerize': 1,
+    'vampire-bite': null,
+    'bloodlust': null,
+    'vulnerable-fire': null,
+    'vulnerable-radiant': null,
+  },
+  pointsToSpend: 16,
+} as Species;
+
+const HumanPath = {
+  name: 'Human Path',
+  description: '',
+  hitDiceSide: 8,
+  speed: 6,
+  physical: 0,
+  mental: 1,
+  social: 1,
+  occult: 1,
+  health: 0,
+  umbra: 1,
+  wealth: 0,
+  morality: 0,
+  reputation: 0,
+  abilities: {
+    'pathic-line': 1,
+  },
+  pointsToSpend: 15,
+
+} as Species;
+
+const Minorem = {
+  name: 'Minorem',
+  description: '',
+  hitDiceSide: 8,
+  speed: 6,
+  physical: 0,
+  mental: 0,
+  social: -1,
+  occult: 1,
+  health: 1,
+  umbra: 1,
+  wealth: 1,
+  morality: 0,
+  reputation: -2,
+  abilities: {
+      'personal-veil': null,
+      'venatori-trained': null,
+      'pathic-line': 1,
+      'magnus': 1,
+    },
+  pointsToSpend: 13
+} as Species;
+
+const Netherborn = {
+  name: 'Netherborn',
+  description: '',
+  hitDiceSide: 8,
+  speed: 6,
+  physical: 1,
+  mental: 0,
+  social: 0,
+  occult: 1,
+  health: 1,
+  umbra: 1,
+  wealth: 1,
+  morality: 0,
+  reputation: 0,
+  abilities: {
+    'shape-change': 1,
+    'dragon-breath': 1,
+    'hoard': null,
+  },
+  pointsToSpend: 14,
+} as Species;
+
+const PrimevalVampire = {
+  name: 'Primeval Vampire',
+  description: '',
+  hitDiceSide: 10,
+  speed: 7,
+  physical: 1,
+  mental: 0,
+  social: -1,
+  occult: 1,
+  health: 1,
+  umbra: 1,
+  wealth: 1,
+  morality: -1,
+  reputation: 0,
+  abilities: {
+    'bloodline': 1,
+    'bloodlust': null,
+    'mesmerize': 1,
+    'vampire-bite': 1,
+    'shadow-walk': 1,
+    'vulnerable-fire': null,
+  },
+  pointsToSpend: 14,
+} as Species;
+
+const SussuriWitch = {
+  name: 'Sussuri Witch',
+  description: '',
+  hitDiceSide: 8,
+  speed: 6,
+  physical: 0,
+  mental: 0,
+  social: -1,
+  occult: 1,
+  health: 0,
+  umbra: 1,
+  wealth: 0,
+  morality: 0,
+  reputation: 0,
+  abilities: {
+    craft: 1 ,
+  },
+  pointsToSpend: 18,
+} as Species;
+
+const Therian = {
+  name: 'Therian',
+  description: '',
+  hitDiceSide: 10,
+  speed: 7,
+  physical: 1,
+  mental: 0,
+  social: -1,
+  occult: 1,
+  health: 1,
+  umbra: 0,
+  wealth: 0,
+  morality: 0,
+  reputation: -1,
+  abilities: {
+    'therian-beast': 1,
+    'rage': null,
+  },
+  pointsToSpend: 17,
+} as Species;
+
+const Venatori = {
+  name: 'Venatori',
+  description: '',
+  hitDiceSide: 10,
+  speed: 7,
+  physical: 1,
+  mental: 1,
+  social: -1,
+  occult: 1,
+  health: 1,
+  umbra: 1,
+  wealth: 1,
+  morality: -1,
+  reputation: -1,
+  abilities: {
+    'personal-veil': null,
+    'venatori-trained': null,
+    'pathic-line': 1,
+  },
+  pointsToSpend: 10,
+} as Species;
+
+export const species = {
+  'mundane-human':  MundaneHuman,
+  'dragon': Dragon,
+  'embraced-vampire': EmbracedVampire,
+  'human-path': HumanPath,
+  'minorem': Minorem,
+  'netherborn': Netherborn,
+  'primeval-vampire': PrimevalVampire,
+  'sussuri-witch': SussuriWitch,
+  'therian': Therian,
+  'venatori': Venatori,
+} as SpeciesList;

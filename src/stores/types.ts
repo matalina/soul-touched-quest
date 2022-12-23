@@ -2,7 +2,7 @@ import { writable } from "svelte/store";
 
 export interface PlayerCharacter {
   name: string;
-  age: string;
+  age: number;
   species: string;
   level: Level;
   concept: string;
@@ -21,11 +21,7 @@ export interface PlayerCharacter {
   log: LogEntry[];
 }
 
-export const character = writable({
-  name: ''
-} as PlayerCharacter);
-
-interface Skill {
+export interface Skill {
   name: string;
   value: number;
   description: string;
@@ -33,18 +29,18 @@ interface Skill {
   modifiers?: Modifier[];
 }
 
-interface Dice {
+export interface Dice {
   side: number;
   count: number;
   modifiers?: Modifier[];
 }
 
-interface Modifier {
+export interface Modifier {
   type: string;
   value: number;
 }
 
-interface SpecialStat {
+export interface SpecialStat {
   name: string;
   value: string;
   challengeRating: number;
@@ -52,41 +48,83 @@ interface SpecialStat {
   reduceMethod: ReduceMethod[];
 }
 
-interface SideEffect {
+export interface SideEffect {
   description: string;
   range: [number|null, number|null];
 }
 
-interface ReduceMethod {
+export interface ReduceMethod {
   description: string;
   reductionValue: number;
   costValue: number;
   costType: string;
 }
 
-interface Ability {
+export interface Ability {
   name: string;
   description: string;
-  type: string; // action, bonus action, reaction, granted
+  type: string; // action, bonus action, reaction, granted, flavor
+  cost: number,
+  atCreation: boolean;
+  levels?: string[],
+  grant?: keyof AbilityList[], // keys of AbilityList
+  options?: string[],
 }
 
-interface Reputation {
+export interface AbilityList {
+  [key: string]: Ability;
+}
+
+export interface Reputation {
   name: string;
   value: number; // the average of the absolute value of all reputations
   reputations?: Reputation[];
 }
 
-interface MaxCurrent {
+export interface MaxCurrent {
   max: number;
   current: number;
 }
 
-interface Level {
+export interface Level {
   value: number;
   unspentPoints: number;
 }
 
-interface LogEntry {
+export interface LogEntry {
   timestamp: number;
-  change: { }
+  type: string;
+  data: {
+    [key:string]: any;
+   }
+}
+
+export interface Species {
+  name: string;
+  description: string;
+  hitDiceSide: number;
+  speed: number;
+  physical: number;
+  mental: number;
+  social: number;
+  occult: number;
+  health: number;
+  umbra: number;
+  wealth: number;
+  morality: number;
+  reputation: number;
+  pointsToSpend: number;
+  abilities?: {
+    [key: keyof AbilityList]: number|null;
+  }
+  flavor?: string[];
+}
+
+export interface SpeciesList {
+  [key: string]: Species;
+}
+
+export interface Vulnerable {
+  type: string;
+  description: string;
 }
