@@ -1,33 +1,51 @@
-import { writable } from "svelte/store";
+export interface Skill {
+  name: string;
+  value: number;
+  description: string;
+  skills?: Skill[];
+}
 
 export interface PlayerCharacter {
   name: string;
   age: number;
   species: string;
   level: Level;
+  episodes: number;
+  points: number;
   concept: string;
+  calling: string;
+  flaw: string;
   skills: Skill[];
-  healthPoints: MaxCurrent;
-  hitDice: Dice;
+  hits: MaxCurrent;
+  hitDC: number;
+  saves: DeathSave[];
   umbra: number;
-  umbraCharges: MaxCurrent;
-  wealthBonus: number;
+  charges: MaxCurrent;
+  wealth: number;
+  profession: string;
+  professionLevel: number;
+  initiative: number;
   morality: number; // right/wrong
   complexity: number; // order/chaos
+  sanity: number;
   reputation: Reputation;
   speed: number;
-  special?: SpecialStat;
-  abilities: Ability[];
+  hunger?: Hunger[];
+  abilities: {
+    [key: keyof AbilityList]: number;
+  };
   log: LogEntry[];
 }
 
-export interface Skill {
-  name: string;
-  value: number;
-  description: string;
-  skills?: Skill[];
-  modifiers?: Modifier[];
+export interface DeathSave {
+  result: boolean; // true = save, false = fail
 }
+
+export interface MaxCurrent {
+  max: number;
+  current: number;
+}
+
 
 export interface Dice {
   side: number;
@@ -40,7 +58,7 @@ export interface Modifier {
   value: number;
 }
 
-export interface SpecialStat {
+export interface Hunger {
   name: string;
   value: string;
   challengeRating: number;
@@ -64,7 +82,7 @@ export interface Ability {
   name: string;
   description: string;
   type: string; // action, bonus action, reaction, granted, flavor
-  cost: number,
+  cost: number;
   atCreation: boolean;
   levels?: keyof AbilityList[]
   grant?: keyof AbilityList[],
@@ -99,13 +117,8 @@ export interface AbilityList {
 
 export interface Reputation {
   name: string;
-  value: number; // the average of the absolute value of all reputations
+  value: number; // the average of the absolute value of all reputations not zero
   reputations?: Reputation[];
-}
-
-export interface MaxCurrent {
-  max: number;
-  current: number;
 }
 
 export interface Level {
@@ -124,22 +137,34 @@ export interface LogEntry {
 export interface Species {
   name: string;
   description: string;
-  hitDiceSide: number;
-  speed: number;
-  physical: number;
-  mental: number;
-  social: number;
-  occult: number;
-  health: number;
-  umbra: number;
-  wealth: number;
-  morality: number;
-  reputation: number;
   pointsToSpend: number;
+  speed?: Modifier;
+  skills?: {
+    physical?: Modifier;
+    mental?: Modifier;
+    social?: Modifier;
+    occult?: Modifier;
+  },
+  hits?: Modifier;
+  hitDC?: Modifier;
+  umbra?: Modifier;
+  wealth?: Modifier;
+  morality?: Modifier;
+  reputation?: Modifier;
+  charges?: Modifier;
+  initiative?: Modifier;
+  hunger?: Modifier;
+  sanity?: Modifier;
+  complexity?: Modifier;
   abilities?: {
-    [key: keyof AbilityList]: number|null;
+    [key: keyof AbilityList]: Modifier|null;
   }
   flavor?: string[];
+}
+
+export interface Modifier {
+  type: string; // change, start
+  value: number;
 }
 
 export interface SpeciesList {

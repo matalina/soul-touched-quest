@@ -42,7 +42,7 @@ const ShapeChange = {
   cost: 1,
   atCreation: false,
   description: 'Choose a type of dragon: air, earth, fire, shadow, water\n\nAs an action and expending an umbra charge unless otherwise stated.',
-  levels: [ 
+  levels: [
     'shape-change-persona',
     'shape-change-medium',
     'shape-change-hybrid-dragon',
@@ -217,7 +217,7 @@ const Bloodline = {
   ] as unknown as keyof AbilityList[],
 } as GrantedAbility;
 
-const BloodlineAnimalKen = { 
+const BloodlineAnimalKen = {
   name: 'Bloodline - Animal Ken',
   description: 'Choose an animal type: bat, rat, wolf, raven, spider (You may choose this ability more than once to control different types)',
   cost: 1,
@@ -279,10 +279,10 @@ const PathicLine = {
   atCreation: true,
   description: '',
   type: 'granted',
-  options: [],
+  //options: [],
 } as Ability;
 
-export const abilities = { 
+export const abilities = {
   'shape-change': ShapeChange,
   'dragon-breath': DragonBreath,
   'hoard': Hoard,
