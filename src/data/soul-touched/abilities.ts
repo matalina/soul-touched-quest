@@ -1,4 +1,4 @@
-import type { Ability, AbilityList, AttackLevelAbility, GrantedAbility, LevelAbilitiy, SpeciesAbility, SpeciesList } from "./types";
+import type { Ability, AbilityList } from '@quest/data/types';
 
 const TherianCarrier = {
   name: 'Therian Carrier',
@@ -7,7 +7,7 @@ const TherianCarrier = {
   type: 'flavor',
   description: 'You were bitten by a therian, but you do not change form or gain any added benefits from the disease that now runs through your veins.  You now have essentially an STD and any transfer of bodily fluids between you and another being has a CR 10 of passing the therianthropy disease on to the other being. (-1)\n\nRecord what type of Therian bit you.',
   granted: ['rage'],
-} as Ability;
+}
 
 const Rage = {
   name: 'Rage',
@@ -17,7 +17,7 @@ const Rage = {
   description: 'You gain +1 Rage on failures and damage taken in any form.  Rage above 10 has a CR 15 to cause a Rage Side effect. Five Rage can be spent as an to fill a spent Umbra charge. 2 Health Points can be spent to reduce Rage by 1 (this damage does not add to the Rage count).',
   granted: ['rage-to-umbra','hp-reduce-rage'],
   canBuy: false,
-} as GrantedAbility;
+}
 
 const RageToUmbra = {
   name: 'Rage to Umbra Charge',
@@ -26,7 +26,7 @@ const RageToUmbra = {
   description: 'Five Rage can be spent as an to fill a spent Umbra charge',
   type: 'granted',
   canBuy: false,
-} as GrantedAbility;
+}
 
 const HealthToReduceRage = {
   name: 'Health Points to Reduce Rage',
@@ -35,7 +35,7 @@ const HealthToReduceRage = {
   description: '2 Health Points can be spent to reduce Rage by 1 (this damage does not add to the Rage count).',
   type: 'granted',
   canBuy: false,
-} as GrantedAbility;
+}
 
 const ShapeChange = {
   name: 'Shape Change',
@@ -50,8 +50,8 @@ const ShapeChange = {
     'shape-change-dragon',
   ] as unknown as keyof AbilityList[],
   type: 'action',
-  species: ['dragon','netherborn'] as unknown as keyof SpeciesList[],
-} as SpeciesAbility;
+  species: ['dragon','netherborn'],
+}
 
 const ShapeChangeMedium =  {
   name: 'Shape Change - Medium Size',
@@ -61,7 +61,7 @@ const ShapeChangeMedium =  {
   type: 'action',
   level: 2,
   parent: 'shape-change',
-} as LevelAbilitiy;
+}
 
 const ShapeChangeDragon =  {
   name: 'Shape Change - Full Dragon Form',
@@ -71,7 +71,7 @@ const ShapeChangeDragon =  {
   type: 'action',
   level: 5,
   parent: 'shape-change',
-} as LevelAbilitiy;
+}
 
 const ShapeChangeSmall =  {
   name: 'Shape Change - Small Size',
@@ -81,7 +81,7 @@ const ShapeChangeSmall =  {
   type: 'action',
   level: 4,
   parent: 'shape-change',
-} as LevelAbilitiy;
+}
 
 const ShapeChangeHybridDragon =  {
   name: 'Shape Change - Hybrid Dragon Form',
@@ -91,7 +91,7 @@ const ShapeChangeHybridDragon =  {
   type: 'action',
   level: 3,
   parent: 'shape-change',
-} as LevelAbilitiy;
+}
 
 const ShapeChangePersona = {
   name: 'Shape Change - Persona',
@@ -101,7 +101,7 @@ const ShapeChangePersona = {
   type: 'action',
   level: 1,
   parent: 'shape-change',
-} as LevelAbilitiy;
+}
 
 const DragonBreath = {
   name: 'Dragon\'s Breath',
@@ -109,7 +109,7 @@ const DragonBreath = {
   atCreation: false,
   description: 'Whatever type chosen for shape change will be the damage type of your dragon\'s breathe. It will create a 15ft cone in front of the dragon in any form',
   type: 'action',
-  species: ['dragon','netherborn'] as unknown as keyof SpeciesList[],
+  species: ['dragon','netherborn'],
   levels: [
     'dragon-breath-attack-1',
     'dragon-breath-attack-2',
@@ -117,7 +117,7 @@ const DragonBreath = {
     'dragon-breath-attack-4',
     'dragon-breath-attack-5',
   ] as unknown as keyof AbilityList,
-} as SpeciesAbility;
+}
 
 const DragonBreathAttack1 = {
   name: 'Dragon Breath Attack 1',
@@ -131,7 +131,7 @@ const DragonBreathAttack1 = {
   damageType: 'dragon type',
   damageCost: 1,
   costType: 'umbra charge',
-} as AttackLevelAbility;
+}
 
 const DragonBreathAttack2 = {
   name: 'Dragon Breath Attack 2',
@@ -145,7 +145,7 @@ const DragonBreathAttack2 = {
   damageType: 'dragon type',
   damageCost: 1,
   costType: 'umbra charge',
-} as AttackLevelAbility;
+}
 
 const DragonBreathAttack3 = {
   name: 'Dragon Breath Attack 3',
@@ -159,7 +159,7 @@ const DragonBreathAttack3 = {
   damageType: 'dragon type',
   damageCost: 1,
   costType: 'umbra charge',
-} as AttackLevelAbility;
+}
 
 const DragonBreathAttack4 = {
   name: 'Dragon Breath Attack 4',
@@ -173,7 +173,7 @@ const DragonBreathAttack4 = {
   damageType: 'dragon type',
   damageCost: 2,
   costType: 'umbra charge',
-} as AttackLevelAbility;
+}
 
 const DragonBreathAttack5 = {
   name: 'Dragon Breath Attack 1',
@@ -187,7 +187,7 @@ const DragonBreathAttack5 = {
   damageType: 'dragon type',
   damageCost: 3,
   costType: 'umbra charge',
-} as AttackLevelAbility;
+}
 
 const Hoard = {
   name: 'Hoard',
@@ -195,8 +195,8 @@ const Hoard = {
   atCreation: false,
   description: 'As a dragon you are a collector of things and because of this you can have an extensive hoard and thus you remain local to one area.  You must be careful of your reputation, tarnishing it will make it difficult to move in the future.',
   type: 'flavor',
-  species: ['dragon','netherborn'] as unknown as keyof SpeciesList[],
-} as SpeciesAbility;
+  species: ['dragon','netherborn'],
+}
 
 const Bloodline = {
   name: 'Bloodline',
@@ -215,7 +215,7 @@ const Bloodline = {
     'bloodline-necromancy',
     'bloodline-shadow'
   ] as unknown as keyof AbilityList[],
-} as GrantedAbility;
+}
 
 const BloodlineAnimalKen = {
   name: 'Bloodline - Animal Ken',
@@ -230,7 +230,7 @@ const BloodlineAnimalKen = {
     'animal-ken-4',
     'animal-ken-5',
   ] as unknown as keyof AbilityList[],
-} as Ability;
+}
 
 const Mesmerize = {
   name: 'Mesmerize',
@@ -238,7 +238,7 @@ const Mesmerize = {
   atCreation: false,
   description: '',
   type: 'bonus-action',
-} as Ability;
+}
 
 const VampireBite = {
   name: 'VampireBite',
@@ -247,7 +247,7 @@ const VampireBite = {
   description: '',
   type: 'action',
   //damage:[],
-} as Ability;
+}
 
 const Bloodlust = {
   name: 'Bloodlust',
@@ -255,7 +255,7 @@ const Bloodlust = {
   atCreation: false,
   description: '',
   type: 'granted',
-} as Ability;
+}
 
 const VulnerableFire = {
   name: 'Vulnerable to Fire',
@@ -263,7 +263,7 @@ const VulnerableFire = {
   atCreation: true,
   description: '',
   type: 'granted',
-} as Ability;
+}
 
 const VulnerableRadiant = {
   name: 'Vulnerable to Radiant',
@@ -271,7 +271,7 @@ const VulnerableRadiant = {
   atCreation: true,
   description: '',
   type: 'granted',
-} as Ability;
+}
 
 const PathicLine = {
   name: 'Pathic Line',
@@ -280,7 +280,7 @@ const PathicLine = {
   description: '',
   type: 'granted',
   //options: [],
-} as Ability;
+}
 
 export const abilities = {
   'shape-change': ShapeChange,
@@ -307,4 +307,4 @@ export const abilities = {
   'dragon-breath-attack-3': DragonBreathAttack3,
   'dragon-breath-attack-4': DragonBreathAttack4,
   'dragon-breath-attack-5': DragonBreathAttack5,
-} as AbilityList;
+}
