@@ -1,8 +1,8 @@
-<script lang="ts">
-import type { PlayerCharacter } from '../../stores/types';
-import { species } from '../../stores/species';
-	import { MentalSkill, OccultSkill, PhysicalSkill, SocialSkill } from '../../stores/constants';
-	import { abilities } from '../../stores/abilities';
+<!--script lang="ts">
+import type { PlayerCharacter } from '../../data/types';
+import { species } from '../../data/species';
+	import { MentalSkill, OccultSkill, PhysicalSkill, SocialSkill } from '../../data/constants';
+	import { abilities } from '../../data/abilities';
 
 const character = {
   name: '',
@@ -30,7 +30,7 @@ const character = {
   skills: [ PhysicalSkill, MentalSkill, SocialSkill, OccultSkill ],
 } as unknown as PlayerCharacter;
 
-</script>
+</!--script>
 
 <div class="row">
   <div class="form-group w-1/2">
@@ -142,8 +142,8 @@ const character = {
 
 <div class="row flex-wrap">
   <div class="form-group w-1/2">
-    {#each character.skills as skill}
-    {skill.name} <input bind:value={skill.value} />
+    {#each Object.keys(character.skills) as key}
+    {character.skills[key].name} <input bind:value={skill.value} />
     {#each skill.skills || [] as subskill}
     {subskill.name} <input bind:value={subskill.value} />
     {/each}
@@ -169,4 +169,4 @@ const character = {
   .row  {
     @apply flex;
   }
-</style>
+</style>-->

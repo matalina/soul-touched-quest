@@ -1,8 +1,14 @@
 export interface Skill {
   name: string;
-  value: number;
   description: string;
   skills?: Skill[];
+}
+
+export interface Stat {
+  base: number;
+  modifiers?: {
+    [key: string]: Modifier|undefined;
+  }
 }
 
 export interface PlayerCharacter {
@@ -15,26 +21,28 @@ export interface PlayerCharacter {
   concept: string;
   calling: string;
   flaw: string;
-  skills: Skill[];
+  skills: {
+    [key: keyof SkillList]: Stat;
+  };
   hits: MaxCurrent;
-  hitDC: number;
+  hitDC: Stat;
   saves: DeathSave[];
-  umbra: number;
+  umbra: Stat
   charges: MaxCurrent;
-  wealth: number;
+  wealth: Stat;
   profession: string;
   professionLevel: number;
   initiative: number;
-  morality: number; // right/wrong
-  complexity: number; // order/chaos
-  sanity: number;
+  morality: Stat; // right/wrong
+  complexity: Stat; // order/chaos
+  sanity: Stat;
   reputation: Reputation;
-  speed: number;
+  speed: Stat;
   hunger?: Hunger[];
   abilities: {
-    [key: keyof AbilityList]: number;
-  };
-  log: LogEntry[];
+    [key: keyof AbilityList]: Stat;
+  }|[];
+  log: LogEntry[]|[];
 }
 
 export interface DeathSave {
@@ -42,15 +50,8 @@ export interface DeathSave {
 }
 
 export interface MaxCurrent {
-  max: number;
+  max: Stat;
   current: number;
-}
-
-
-export interface Dice {
-  side: number;
-  count: number;
-  modifiers?: Modifier[];
 }
 
 export interface Modifier {
@@ -111,14 +112,18 @@ export interface AttackAbility extends Ability {
 
 export interface AttackLevelAbility extends LevelAbilitiy, AttackAbility {};
 
+export interface SkillList {
+  [key: string]: Skill;
+}
+
 export interface AbilityList {
   [key: string]: Ability;
 }
 
 export interface Reputation {
   name: string;
-  value: number; // the average of the absolute value of all reputations not zero
-  reputations?: Reputation[];
+  value: Stat; // the average of the absolute value of all reputations not zero
+  reputations?: Reputation[]|[];
 }
 
 export interface Level {
@@ -157,7 +162,7 @@ export interface Species {
   sanity?: Modifier;
   complexity?: Modifier;
   abilities?: {
-    [key: keyof AbilityList]: Modifier|null;
+    [key: keyof AbilityList]: Modifier;
   }
   flavor?: string[];
 }
