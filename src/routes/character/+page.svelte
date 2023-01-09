@@ -1,8 +1,8 @@
 <script type="ts">
-	import { currentCharacter } from "@quest/data/stores";
-  import Step1 from "./components/Step1.svelte";
-  import Step2 from "./components/Step2.svelte";
-  import Step3 from "./components/Step3.svelte";
+	import { currentCharacter } from '@quest/data/stores';
+  import Step1 from './components/Step1.svelte';
+  import Step2 from './components/Step2.svelte';
+  import Step3 from './components/Step3.svelte';
 
   let step = 1;
   $: console.log($currentCharacter);   
