@@ -1,36 +1,36 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import { emptyCharacter } from '@quest/data/empties';
-	import { currentCharacter } from '@quest/data/stores';
-  import type { WorldList } from '@quest/data/types';
-  import { worlds } from "@quest/data/worlds";
+import type { WorldList } from '../../../data/types';
+import { createEventDispatcher } from 'svelte';
+import { emptyCharacter } from '../../../data/empties';
+import { currentCharacter } from '../../../data/stores';
+import { worlds } from "../../../data/worlds";
 
-  let world = '';
-  const dispatch = createEventDispatcher();
+let world = '';
+const dispatch = createEventDispatcher();
 
-  function setWorld() {
-    $currentCharacter  = emptyCharacter;
-    $currentCharacter.world = world;
+function setWorld() {
+  $currentCharacter  = emptyCharacter;
+  $currentCharacter.world = world;
 
-    let worldRules = worlds[world];
-    for(let i in worldRules.stats) {
-      $currentCharacter.stats = { ...$currentCharacter.stats, [i]: worldRules.stats[i].stat };
-    }
-    for(let i in worldRules.skills) {
-      $currentCharacter.skills = { ...$currentCharacter.skills, [i]: worldRules.skills[i] };
-    }
-
-    dispatch('nextstep');
+  let worldRules = worlds[world];
+  for(let i in worldRules.stats) {
+    $currentCharacter.stats = { ...$currentCharacter.stats, [i]: worldRules.stats[i].stat };
+  }
+  for(let i in worldRules.skills) {
+    $currentCharacter.skills = { ...$currentCharacter.skills, [i]: worldRules.skills[i] };
   }
 
-  function getKey(key: string) {
-    return key as keyof WorldList;
-  }
+  dispatch('nextstep');
+}
+
+function getKey(key: string) {
+  return key as keyof WorldList;
+}
 </script>
 
-<p>The first thing we need to do is select which world you want to create a world in.</p>
+<p>The first thing we need to do is select which world you want to create a character in.</p>
 
-<select 
+<select
   bind:value={world}
   on:change={setWorld}
 >

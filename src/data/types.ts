@@ -1,7 +1,7 @@
 export type DotString = string;
 
 const modifiers = [
-  'start','change'
+  'start', 'change', 'grant'
 ];
 export type ModifierType = typeof modifiers[number];
 
@@ -31,13 +31,27 @@ export interface RuleList {
 
 export interface Package {
   name: string;
+  description: string;
+  id: string;
+  cost: number;
   stats?: {
-    [key: keyof RuleList]: RuleStat;
+    [key: string]: Modifier;
   };
   skills?: {
-    [key: keyof SkillList]: SkillStat;
+    [key: string]: Modifier;
   };
-  abilities?: AbilityList;
+  abilities?: {
+    [key: string]: Modifier;
+  }
+}
+
+export interface PackageList {
+  [key: string]: {
+    name: string;
+    packages: {
+      [key: string]: Package;
+    }
+  }
 }
 
 export interface World {
@@ -48,7 +62,7 @@ export interface World {
   skills?: {
     [key: keyof SkillList]: SkillStat;
   };
-  packages?: Package[];
+  packages: PackageList;
 }
 
 export interface WorldList {
@@ -86,7 +100,10 @@ export interface Ability {
 }
 
 export interface AbilityList {
-  [key: string]: Ability;
+  [key: string]: {
+    modifiers?: Modifier;
+    ability: Ability;
+  }
 }
 
 export interface DeathSave {

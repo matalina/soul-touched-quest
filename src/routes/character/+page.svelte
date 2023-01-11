@@ -1,11 +1,11 @@
 <script type="ts">
-	import { currentCharacter } from '@quest/data/stores';
+	import { currentCharacter } from '../../data/stores';
   import Step1 from './components/Step1.svelte';
   import Step2 from './components/Step2.svelte';
   import Step3 from './components/Step3.svelte';
 
   let step = 1;
-  $: console.log($currentCharacter);   
+  $: console.log($currentCharacter);
 
   function nextStep() {
     step++;
@@ -13,6 +13,9 @@
 </script>
 
 <h1>Character Creation</h1>
+<div>
+  <strong>Unspent Points:</strong> {$currentCharacter.level.nextLevel?.unspentPoints}
+</div>
 
 {#if step === 1}
 <Step1 on:nextstep={nextStep}/>

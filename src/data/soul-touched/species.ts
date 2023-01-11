@@ -1,231 +1,236 @@
-import type { Species, SpeciesList } from "./types";
+import type { Package } from "../types";
 
-const MundaneHuman = {
+const MundaneHuman: Package = {
   name: 'Mundane Human',
+  id: 'mundane-human',
   description: '',
-  speed: { type: 'start', value: 6},
-  physical: { type: 'change', value: 0},
-  mental: { type: 'change', value: 0},
-  social: { type: 'change', value: 1},
-  occult: { type: 'change', value: -1},
-  hits: { type: 'change', value: 0},
-  umbra: { type: 'change', value: -1},
-  wealth: { type: 'change', value: 0},
-  morality: { type: 'change', value: 0},
-  reputation: { type: 'change', value: 0},
-  pointsToSpend: 21,
-} as Species;
-
-const Dragon = {
-  name: 'Dragon',
-  description: '',
-
-  speed: { type: 'start', value: 7},
-  physical: { type: 'change', value: 0},
-  mental: { type: 'change', value: 1},
-  social: { type: 'change', value: -1},
-  occult: { type: 'change', value: 1},
-  hits: { type: 'change', value: 0},
-  umbra: { type: 'change', value: 1},
-  wealth: { type: 'change', value: 1},
-  morality: { type: 'change', value: 0},
-  reputation: { type: 'change', value: 1},
-  pointsToSpend: 13,
-  abilities: {
-    'shape-change': { type: 'change', value: 1},
-    'dragon-breath': { type: 'change', value: 1},
-    'hoard': null,
+  cost: -1, // add 1 point to total amount spendable
+  stats: {
+    speed: { type: 'start', value: 6 },
+    umbra: { type: 'change', value: -1 },
   },
-} as Species;
+  skills: {
+    social: { type: 'change', value: 1 },
+    occult: { type: 'change', value: -1 },
+  }
+};
+
+const Dragon: Package = {
+  name: 'Dragon',
+  id: 'dragon',
+  description: '',
+  cost: 7,
+  stats: {
+    speed: { type: 'start', value: 7 },
+    umbra: { type: 'change', value: 1},
+    wealth: { type: 'change', value: 1 },
+    reputation: { type: 'change', value: 1},
+  },
+  skills: {
+    mental: { type: 'change', value: 1},
+    social: { type: 'change', value: -1},
+    occult: { type: 'change', value: 1},
+  },
+  abilities: {
+    'shape-change': { type: 'change', value: 1 },
+    'dragon-breath':{ type: 'change', value: 1 },
+    'hoard': { type: 'grant', value: 1 },
+  }
+};
 
 const EmbracedVampire = {
   name: 'Embraced Vampire',
+  id: 'embraced-vampire',
   description: '',
-
-  speed: { type: 'start', value: 7},
-  physical: { type: 'change', value: 1},
-  mental: { type: 'change', value: 0},
-  social: { type: 'change', value: -1},
-  occult: { type: 'change', value: 1},
-  hits: { type: 'change', value: 1},
-  umbra: { type: 'change', value: 1},
-  wealth: { type: 'change', value: 1},
-  morality: { type: 'change', value: -1},
-  reputation: { type: 'change', value: 0},
+  cost: 4,
+  stats: {
+    speed: { type: 'start', value: 7 },
+    hits: { type: 'change', value: 1},
+    umbra: { type: 'change', value: 1},
+    wealth: { type: 'change', value: 1},
+    morality: { type: 'change', value: -1},
+  },
+  skills: {
+    physical: { type: 'change', value: 1},
+    social: { type: 'change', value: -1},
+    occult: { type: 'change', value: 1},
+  },
   abilities: {
     'bloodline': { type: 'change', value: 1},
     'mesmerize': { type: 'change', value: 1},
-    'vampire-bite': null,
-    'bloodlust': null,
-    'vulnerable-fire': null,
-    'vulnerable-radiant': null,
+    'vampire-bite': { type: 'grant', value: 1 },
+    'bloodlust': { type: 'grant', value: 1 },
+    'vulnerable-fire': { type: 'grant', value: 1 },
+    'vulnerable-radiant': { type: 'grant', value: 1 },
   },
-  pointsToSpend: 16,
-} as Species;
+};
 
 const HumanPath = {
   name: 'Human Path',
   description: '',
-
-  speed: { type: 'start', value: 6},
-  physical: { type: 'change', value: 0},
-  mental: { type: 'change', value: 1},
-  social: { type: 'change', value: 1},
-  occult: { type: 'change', value: 1},
-  hits: { type: 'change', value: 0},
-  umbra: { type: 'change', value: 1},
-  wealth: { type: 'change', value: 0},
-  morality: { type: 'change', value: 0},
-  reputation: { type: 'change', value: 0},
+  id: 'human-path',
+  cost: 5,
+  stats: {
+    speed: { type: 'start', value: 6 },
+    umbra: { type: 'change', value: 1},
+  },
+  skills: {
+    mental: { type: 'change', value: 1},
+    social: { type: 'change', value: 1},
+    occult: { type: 'change', value: 1},
+    },
   abilities: {
     'pathic-line': { type: 'change', value: 1},
   },
-  pointsToSpend: 15,
-
-} as Species;
+};
 
 const Minorem = {
   name: 'Minorem',
   description: '',
-
-  speed: { type: 'start', value: 6},
-  physical: { type: 'change', value: 0},
-  mental: { type: 'change', value: 0},
-  social: { type: 'change', value: -1},
-  occult: { type: 'change', value: 1},
-  hits: { type: 'change', value: 1},
-  umbra: { type: 'change', value: 1},
-  wealth: { type: 'change', value: 1},
-  morality: { type: 'change', value: 0},
-  reputation: { type: 'change', value: -2},
+  id: 'minorem',
+  cost: 7,
+  stats: {
+    speed: { type: 'start', value: 6 },
+    hits: { type: 'change', value: 1},
+    umbra: { type: 'change', value: 1},
+    wealth: { type: 'change', value: 1},
+    reputation: { type: 'change', value: -2},
+  },
+  skills: {
+    social: { type: 'change', value: -1},
+    occult: { type: 'change', value: 1},
+  },
   abilities: {
-      'personal-veil': null,
-      'venatori-trained': null,
+      'personal-veil': { type: 'grant', value: 1 },
+      'venatori-trained': { type: 'grant', value: 1 },
       'pathic-line': { type: 'change', value: 1},
       'magnus': { type: 'change', value: 1},
     },
-  pointsToSpend: 13
-} as Species;
+};
 
 const Netherborn = {
   name: 'Netherborn',
   description: '',
-
-  speed: { type: 'start', value: 6},
-  physical: { type: 'change', value: 1},
-  mental: { type: 'change', value: 0},
-  social: { type: 'change', value: 0},
-  occult: { type: 'change', value: 1},
-  hits: { type: 'change', value: 1},
-  umbra: { type: 'change', value: 1},
-  wealth: { type: 'change', value: 1},
-  morality: { type: 'change', value: 0},
-  reputation: { type: 'change', value: 0},
+  id: 'netherborn',
+  cost: 6,
+  stats: {
+    speed: { type: 'start', value: 6 },
+    hits: { type: 'change', value: 1},
+    umbra: { type: 'change', value: 1},
+    wealth: { type: 'change', value: 1},
+  },
+  skills: {
+    physical: { type: 'change', value: 1},
+    occult: { type: 'change', value: 1},
+  },
   abilities: {
     'shape-change': { type: 'change', value: 1},
     'dragon-breath': { type: 'change', value: 1},
-    'hoard': null,
+    'hoard': { type: 'grant', value: 1 },
   },
-  pointsToSpend: 14,
-} as Species;
+};
 
 const PrimevalVampire = {
   name: 'Primeval Vampire',
   description: '',
-
-  speed: { type: 'start', value: 7},
-  physical: { type: 'change', value: 1},
-  mental: { type: 'change', value: 0},
-  social: { type: 'change', value: -1},
-  occult: { type: 'change', value: 1},
-  hits: { type: 'change', value: 1},
-  umbra: { type: 'change', value: 1},
-  wealth: { type: 'change', value: 1},
-  morality: { type: 'change', value: -1},
-  reputation: { type: 'change', value: 0},
+  id: 'primeval-vampire',
+  cost: 6,
+  stats: {
+    speed: { type: 'start', value: 7 },
+    hits: { type: 'change', value: 1},
+    umbra: { type: 'change', value: 1},
+    wealth: { type: 'change', value: 1},
+    morality: { type: 'change', value: -1},
+  },
+  skills: {
+    physical: { type: 'change', value: 1},
+    social: { type: 'change', value: -1},
+    occult: { type: 'change', value: 1},
+  },
   abilities: {
     'bloodline': { type: 'change', value: 1},
-    'bloodlust': null,
+    'bloodlust': { type: 'grant', value: 1 },
     'mesmerize': { type: 'change', value: 1},
     'vampire-bite': { type: 'change', value: 1},
     'shadow-walk': { type: 'change', value: 1},
-    'vulnerable-fire': null,
+    'vulnerable-fire': { type: 'grant', value: 1 },
   },
-  pointsToSpend: 14,
-} as Species;
+};
 
 const SussuriWitch = {
   name: 'Sussuri Witch',
   description: '',
-
-  speed: { type: 'start', value: 6},
-  physical: { type: 'change', value: 0},
-  mental: { type: 'change', value: 0},
-  social: { type: 'change', value: -1},
-  occult: { type: 'change', value: 1},
-  hits: { type: 'change', value: 0},
-  umbra: { type: 'change', value: 1},
-  wealth: { type: 'change', value: 0},
-  morality: { type: 'change', value: 0},
-  reputation: { type: 'change', value: 0},
+  id: 'sussuri Witch',
+  cost: 2,
+  stats: {
+    speed: { type: 'start', value: 6 },
+    umbra: { type: 'change', value: 1},
+  },
+  skills: {
+    social: { type: 'change', value: -1},
+    occult: { type: 'change', value: 1},
+  },
   abilities: {
     craft: { type: 'change', value: 1} ,
   },
-  pointsToSpend: 18,
-} as Species;
+};
 
 const Therian = {
   name: 'Therian',
   description: '',
-
-  speed: { type: 'start', value: 7},
-  physical: { type: 'change', value: 1},
-  mental: { type: 'change', value: 0},
-  social: { type: 'change', value: -1},
-  occult: { type: 'change', value: 1},
-  hits: { type: 'change', value: 1},
-  umbra: { type: 'change', value: 0},
-  wealth: { type: 'change', value: 0},
-  morality: { type: 'change', value: 0},
-  reputation: { type: 'change', value: -1},
+  id: 'therian',
+  cost: 3,
+  stats: {
+    speed: { type: 'start', value: 7 },
+    hits: { type: 'change', value: 1},
+    reputation: { type: 'change', value: -1},
+    },
+  skills: {
+    physical: { type: 'change', value: 1},
+    social: { type: 'change', value: -1},
+    occult: { type: 'change', value: 1},
+  },
   abilities: {
     'therian-beast': { type: 'change', value: 1},
-    'rage': null,
+    'rage': { type: 'grant', value: 1 },
   },
-  pointsToSpend: 17,
-} as Species;
+};
 
 const Venatori = {
   name: 'Venatori',
   description: '',
-
-  speed: { type: 'start', value: 7},
-  physical: { type: 'change', value: 1},
-  mental: { type: 'change', value: 1},
-  social: { type: 'change', value: -1},
-  occult: { type: 'change', value: 1},
-  hits: { type: 'change', value: 1},
-  umbra: { type: 'change', value: 1},
-  wealth: { type: 'change', value: 1},
-  morality: { type: 'change', value: -1},
-  reputation: { type: 'change', value: -1},
+  id: 'venatori',
+  cost: 10,
+  stats: {
+    speed: { type: 'start', value: 7 },
+    hits: { type: 'change', value: 1},
+    umbra: { type: 'change', value: 1},
+    wealth: { type: 'change', value: 1},
+    morality: { type: 'change', value: -1},
+    reputation: { type: 'change', value: -1},
+  },
+  skills: {
+    physical: { type: 'change', value: 1},
+    mental: { type: 'change', value: 1},
+    social: { type: 'change', value: -1},
+    occult: { type: 'change', value: 1},
+  },
   abilities: {
-    'personal-veil': null,
-    'venatori-trained': null,
+    'personal-veil': { type: 'grant', value: 1 },
+    'venatori-trained': { type: 'grant', value: 1 },
     'pathic-line': { type: 'change', value: 1},
   },
-  pointsToSpend: 10,
-} as Species;
+};
 
-export const species = {
-  'mundane-human':  MundaneHuman,
-  'dragon': Dragon,
-  'embraced-vampire': EmbracedVampire,
-  'human-path': HumanPath,
-  'minorem': Minorem,
-  'netherborn': Netherborn,
-  'primeval-vampire': PrimevalVampire,
-  'sussuri-witch': SussuriWitch,
-  'therian': Therian,
-  'venatori': Venatori,
-} as SpeciesList;
+export {
+  MundaneHuman,
+  Dragon,
+  EmbracedVampire,
+  Netherborn,
+  HumanPath,
+  SussuriWitch,
+  PrimevalVampire,
+  Minorem,
+  Venatori,
+  Therian,
+};
