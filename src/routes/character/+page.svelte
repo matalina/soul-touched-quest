@@ -3,6 +3,7 @@
   import Step1 from './components/Step1.svelte';
   import Step2 from './components/Step2.svelte';
   import Step3 from './components/Step3.svelte';
+	import Step4 from './components/Step4.svelte';
 
   let step = 1;
   $: console.log($currentCharacter);
@@ -27,4 +28,8 @@
 
 {#if step === 3}
 <Step3 on:nextstep={nextStep}/>
+{/if}
+
+{#if step >= 4}
+<Step4 on:nextstep={nextStep}/>
 {/if}

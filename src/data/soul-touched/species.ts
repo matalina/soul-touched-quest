@@ -24,7 +24,6 @@ const Dragon: Package = {
     speed: { type: 'start', value: 7 },
     umbra: { type: 'change', value: 1},
     wealth: { type: 'change', value: 1 },
-    reputation: { type: 'change', value: 1},
   },
   skills: {
     mental: { type: 'change', value: 1},
@@ -35,10 +34,11 @@ const Dragon: Package = {
     'shape-change': { type: 'change', value: 1 },
     'dragon-breath':{ type: 'change', value: 1 },
     'hoard': { type: 'grant', value: 1 },
-  }
+  },
+  reputation: { type: 'change', value: 1},
 };
 
-const EmbracedVampire = {
+const EmbracedVampire: Package = {
   name: 'Embraced Vampire',
   id: 'embraced-vampire',
   description: '',
@@ -65,7 +65,7 @@ const EmbracedVampire = {
   },
 };
 
-const HumanPath = {
+const HumanPath: Package = {
   name: 'Human Path',
   description: '',
   id: 'human-path',
@@ -84,7 +84,7 @@ const HumanPath = {
   },
 };
 
-const Minorem = {
+const Minorem: Package = {
   name: 'Minorem',
   description: '',
   id: 'minorem',
@@ -94,21 +94,22 @@ const Minorem = {
     hits: { type: 'change', value: 1},
     umbra: { type: 'change', value: 1},
     wealth: { type: 'change', value: 1},
-    reputation: { type: 'change', value: -2},
+    morality: { type: 'start', value: 0 }
   },
   skills: {
     social: { type: 'change', value: -1},
     occult: { type: 'change', value: 1},
   },
   abilities: {
-      'personal-veil': { type: 'grant', value: 1 },
-      'venatori-trained': { type: 'grant', value: 1 },
-      'pathic-line': { type: 'change', value: 1},
-      'magnus': { type: 'change', value: 1},
-    },
+    'personal-veil': { type: 'grant', value: 1 },
+    'venatori-trained': { type: 'grant', value: 1 },
+    'pathic-line': { type: 'change', value: 1},
+    'magnus': { type: 'change', value: 1},
+  },
+  reputation: { type: 'change', value: -2 },
 };
 
-const Netherborn = {
+const Netherborn: Package = {
   name: 'Netherborn',
   description: '',
   id: 'netherborn',
@@ -130,7 +131,7 @@ const Netherborn = {
   },
 };
 
-const PrimevalVampire = {
+const PrimevalVampire: Package = {
   name: 'Primeval Vampire',
   description: '',
   id: 'primeval-vampire',
@@ -157,7 +158,7 @@ const PrimevalVampire = {
   },
 };
 
-const SussuriWitch = {
+const SussuriWitch: Package = {
   name: 'Sussuri Witch',
   description: '',
   id: 'sussuri Witch',
@@ -175,7 +176,7 @@ const SussuriWitch = {
   },
 };
 
-const Therian = {
+const Therian: Package = {
   name: 'Therian',
   description: '',
   id: 'therian',
@@ -183,7 +184,6 @@ const Therian = {
   stats: {
     speed: { type: 'start', value: 7 },
     hits: { type: 'change', value: 1},
-    reputation: { type: 'change', value: -1},
     },
   skills: {
     physical: { type: 'change', value: 1},
@@ -194,9 +194,10 @@ const Therian = {
     'therian-beast': { type: 'change', value: 1},
     'rage': { type: 'grant', value: 1 },
   },
+  reputation: { type: 'change', value: -1},
 };
 
-const Venatori = {
+const Venatori: Package = {
   name: 'Venatori',
   description: '',
   id: 'venatori',
@@ -206,8 +207,7 @@ const Venatori = {
     hits: { type: 'change', value: 1},
     umbra: { type: 'change', value: 1},
     wealth: { type: 'change', value: 1},
-    morality: { type: 'change', value: -1},
-    reputation: { type: 'change', value: -1},
+    morality: { type: 'start', value: 0},
   },
   skills: {
     physical: { type: 'change', value: 1},
@@ -220,6 +220,7 @@ const Venatori = {
     'venatori-trained': { type: 'grant', value: 1 },
     'pathic-line': { type: 'change', value: 1},
   },
+  reputation: { type: 'change', value: -1},
 };
 
 export {

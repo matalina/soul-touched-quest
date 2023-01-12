@@ -1,3 +1,4 @@
+import { UnarmedAttack } from "./abilities";
 import { MentalSkill, PhysicalSkill, SocialSkill } from "./skills";
 import type { ChallengeRating, HitPool, PlayerCharacter } from "./types";
 
@@ -25,7 +26,7 @@ export const emptyCharacter: PlayerCharacter = {
   currentHits: emptyHitPool,
   saves: [],
   stats: {
-    maxHits: {base:5},
+    hits: {base:5},
     hitDC: {base:10},
     morality: {base:5},
     complexity: {base:0},
@@ -34,7 +35,9 @@ export const emptyCharacter: PlayerCharacter = {
     speed: {base:0},
     initiative: {base:0},
   },
-  abilities: {},
+  abilities: {
+    'unarmed-attack': UnarmedAttack,
+  },
   skills: {
     physical: { stat: {base:0}, skill: PhysicalSkill },
     mental: { stat: {base:0}, skill: MentalSkill },

@@ -42,7 +42,8 @@ export interface Package {
   };
   abilities?: {
     [key: string]: Modifier;
-  }
+  },
+  reputation?: Modifier;
 }
 
 export interface PackageList {
@@ -93,7 +94,7 @@ export interface Ability {
   description: string;
   type: ActionType;
   cost: number;
-  atCreation: boolean;
+  atCreation?: boolean;
   levels?: keyof AbilityList[]
   grant?: keyof AbilityList[],
   options?: keyof AbilityList[],
@@ -139,19 +140,39 @@ export interface LogEntry {
    }
 }
 
-export interface PlayerCharacter {
-  name: string;
-  world: keyof WorldList;
-  level: ChallengeRating;
+export interface PlayerCharacter extends Character {
+  log: LogEntry[];
+}
+
+export interface Character extends Creature {
   age: number;
   concept: string;
   calling: string;
   flaw: string;
+  profession: Profession;
+}
+
+export interface Profession {
+  name: string;
+  level: ProfessionLevel;
+  skill: Skill;
+};
+
+export interface ProfessionLevel {
+  name: string;
+  description: string;
+  wealth: Modifier;
+}
+
+export interface Creature {
+  world: keyof WorldList;
+  name: string;
+  level: ChallengeRating;
   currentHits: HitPool;
   saves: DeathSave[];
   stats: {
+    hits: Stat;
     hitDC: Stat;
-    maxHits: Stat;
     wealth: Stat;
     initiative: Stat;
     morality: Stat; // right/wrong
@@ -164,8 +185,7 @@ export interface PlayerCharacter {
     [key: keyof SkillList]: SkillStat;
   };
   abilities: {
-    [key: keyof AbilityList]: Stat;
+    [key: keyof AbilityList]: Ability;
   };
   reputation: Reputation;
-  log: LogEntry[];
 }
