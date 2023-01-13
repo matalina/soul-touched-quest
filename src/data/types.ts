@@ -63,6 +63,7 @@ export interface World {
   skills?: {
     [key: keyof SkillList]: SkillStat;
   };
+  professionLevels?: ProfessionLevel[];
   packages: PackageList;
 }
 
@@ -162,6 +163,8 @@ export interface ProfessionLevel {
   name: string;
   description: string;
   wealth: Modifier;
+  minAge?: number;
+  morality?: Modifier;
 }
 
 export interface Creature {

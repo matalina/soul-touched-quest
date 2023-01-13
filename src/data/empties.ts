@@ -1,6 +1,6 @@
 import { UnarmedAttack } from "./abilities";
 import { MentalSkill, PhysicalSkill, SocialSkill } from "./skills";
-import type { ChallengeRating, HitPool, PlayerCharacter } from "./types";
+import type { ChallengeRating, HitPool, PlayerCharacter, Profession } from "./types";
 
 export const emptyLevel: ChallengeRating = {
   cr: 1,
@@ -25,6 +25,7 @@ export const emptyCharacter: PlayerCharacter = {
   level: emptyLevel,
   currentHits: emptyHitPool,
   saves: [],
+  profession: {} as Profession,
   stats: {
     hits: {base:5},
     hitDC: {base:10},

@@ -1,4 +1,4 @@
-import { OccultSkill } from './soul-touched/types';
+import { OccultSkill, VenatoriHunter } from './soul-touched/types';
 import { Dragon, EmbracedVampire, HumanPath, Minorem, MundaneHuman, Netherborn, PrimevalVampire, SussuriWitch, Therian, Venatori } from './soul-touched/species';
 import type { World, WorldList } from './types'
 
@@ -12,6 +12,7 @@ const SoulTouched: World = {
   skills: {
     occult: {stat: {base:0}, skill:OccultSkill},
   },
+  professionLevels: [VenatoriHunter],
   stats: {
     umbra: {
       stat: {base:0},

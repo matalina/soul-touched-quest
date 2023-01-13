@@ -1,10 +1,17 @@
-import type { Skill } from "../types";
+import type { ProfessionLevel, Skill } from "../types";
 
 export const OccultSkill: Skill = {
   name: 'occult',
   description: 'This is a generic occult skill, this covers the basics all things supernatural and magical',
   skills: [],
 };
+
+export const VenatoriHunter: ProfessionLevel = {
+  name: 'Venatori Hunter',
+  description: 'someone who makes a living on the other side of the law',
+  wealth: { type: 'change', value: 2 },
+  morality: { type: 'start', value: -1}
+}
 
 /* export interface Species {
   name: string;
