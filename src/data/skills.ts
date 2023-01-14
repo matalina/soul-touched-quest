@@ -24,18 +24,6 @@ export const skills = {
   social: SocialSkill,
 } as SkillList
 
-/*
-* Profession with a Doctorate: Wealth: +4, Min Age 26
-* Profession with a Masters: Wealth: +3, Min Age 24
-* Profession with a Bachelors: Wealth: +2, Min Age 22
-* Profession with an Associates Degree: Wealth: +1, Min Age 20
-* Blue Collar/White Collar Labor: Wealth: +0
-* Student: Wealth: -1
-* Unemployed: Wealth: -2
-* Criminal: Wealth: +2, Morality: start at -1
-* Venatori Hunter: Wealth: +1, Morality start at 0
-*/
-
 export const Doctorate: ProfessionLevel = {
   name: 'Doctorate',
   description: 'a PHD in a given field',

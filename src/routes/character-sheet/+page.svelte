@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Sheet from "src/components/Sheet.svelte";
+	import Sheet from "src/components/CharacterSheet.svelte";
 	import { currentCharacter } from "src/data/stores";
 
 

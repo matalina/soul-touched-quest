@@ -66,3 +66,15 @@
 {#if step < 1}
 <button on:click={nextStep}>Apply World Packages</button>
 {/if}
+
+<style>
+  label {
+    @apply flex flex-col;
+  }
+  span {
+    @apply mb-3 font-bold;
+  }
+  select {
+    @apply mb-3;
+  }
+</style>
